@@ -1,0 +1,105 @@
+<!--
+How to use:
+1) Teacher selects a student, records an event, and adds an optional note.
+2) The system converts learning records into cultivation growth and narrative logs.
+3) Unlock achievements, exchange tokens for gentle buffs, and review progress.
+4) Use Save/Load to persist state, or Reset to return to the starting setup.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skybound Cultivation Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top-header">
+    <div class="brand">
+      <div class="seal"></div>
+      <div>
+        <h1>Skybound Cultivation Academy</h1>
+        <p>Learning records become cultivation progress</p>
+      </div>
+    </div>
+    <nav class="tabs">
+      <button class="tab active">Sect Hall</button>
+      <button class="tab">Cultivation</button>
+      <button class="tab">Missions</button>
+      <button class="tab">Records</button>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="panel teacher-console">
+      <h2>Teacher Console</h2>
+      <form id="record-form">
+        <label>
+          Student
+          <select id="student-select"></select>
+        </label>
+        <label>
+          Record Type
+          <select id="record-type">
+            <option value="homework">Homework Submitted</option>
+            <option value="correction">Correction Completed</option>
+            <option value="quiz">Quiz Result</option>
+            <option value="exam">Exam Result</option>
+            <option value="contest">Contest Participation</option>
+            <option value="focus">Focus in Class</option>
+          </select>
+        </label>
+        <label id="record-outcome-label">
+          Outcome
+          <select id="record-outcome"></select>
+        </label>
+        <label>
+          Teacher Note (optional)
+          <textarea id="record-note" rows="3" placeholder="Short note for the student..."></textarea>
+        </label>
+        <label class="inline">
+          <input type="checkbox" id="dao-journal" />
+          Add to Dao Journal (reflection insight)
+        </label>
+        <button type="submit" class="primary">Record Event</button>
+      </form>
+      <div class="console-actions">
+        <button id="save-btn">Save</button>
+        <button id="load-btn">Load</button>
+        <button id="reset-btn" class="danger">Reset</button>
+      </div>
+    </section>
+
+    <section class="panel students-panel">
+      <div class="panel-header">
+        <h2>Cultivator Roster</h2>
+        <p>Numbers are primary; narratives are supportive guidance.</p>
+      </div>
+      <div id="student-cards" class="student-cards"></div>
+    </section>
+
+    <section class="panel achievements-panel">
+      <h2>Achievements</h2>
+      <p>Behavioral milestones grant Achievement Tokens.</p>
+      <div id="achievement-list" class="achievement-list"></div>
+    </section>
+
+    <section class="panel exchange-panel">
+      <h2>Achievement Exchange</h2>
+      <p>Use tokens to gain gentle boosts. Exchange applies to the selected student.</p>
+      <div id="exchange-options" class="exchange-options"></div>
+    </section>
+
+    <section class="panel log-panel">
+      <h2>Narrative Log</h2>
+      <div id="log-entries" class="log-entries"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Classroom-safe cultivation system • Designed for growth and consistency</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
